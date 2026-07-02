@@ -28,25 +28,25 @@ const QKV_CARDS: { accent: 'clay' | 'sky' | 'olive' | 'gray'; tag: string; copy:
   {
     accent: 'clay',
     tag: 'Q · query',
-    copy: <>What this token is looking for. “I'm a pronoun — who's my referent?”</>,
+    copy: <>What this token is looking for — for example, a pronoun seeking its referent.</>,
   },
   {
     accent: 'sky',
     tag: 'K · key',
-    copy: <>What each token advertises. Query·key dot products become compatibility scores.</>,
+    copy: <>What each token offers. Query·key dot products become compatibility scores.</>,
   },
   {
     accent: 'olive',
     tag: 'V · value',
-    copy: <>What a token hands over once selected. The output is a weighted average of values.</>,
+    copy: <>What a token contributes once selected. The output is a weighted average of values.</>,
   },
   {
     accent: 'gray',
     tag: '√dₖ · the scale',
     copy: (
       <>
-        Dot products grow with dimension; unscaled, softmax saturates and gradients die. One
-        tiny division fixes it.
+        Dot products grow with dimension; unscaled, softmax saturates and gradients vanish. A
+        single scaling division corrects this.
       </>
     ),
   },
@@ -69,7 +69,7 @@ export function IdeaSection() {
           <Eyebrow accent="clay">Part 05 · What was actually new</Eyebrow>
         </Reveal>
         <Reveal>
-          <H2>Every token looks at every token. At once.</H2>
+          <H2>Every token attends to every token, simultaneously.</H2>
         </Reveal>
         <Reveal>
           <Lede>
@@ -108,19 +108,19 @@ export function IdeaSection() {
             Run that <strong>h = 8 times in parallel</strong> with different learned
             projections (<Mono>d_k = d_v = 64</Mono> each, concatenated back to 512) and you
             get <strong>multi-head attention</strong> — eight subspaces attending to different
-            things, like the three heads you toggled above. Attention is used three ways in
+            relationships, like the three heads you toggled above. Attention is used three ways in
             the model: encoder self-attention, <em>masked</em> decoder self-attention, and
             decoder→encoder cross-attention.
           </Body>
         </Reveal>
 
         <Reveal>
-          <BlockLabel>One problem: attention is a bag, not a sequence</BlockLabel>
+          <BlockLabel>One problem: attention ignores word order</BlockLabel>
         </Reveal>
         <Reveal>
           <Lede>
             Delete recurrence and word order vanishes — “dog bites man” = “man bites dog”. The
-            fix: <strong>add position into the embedding itself</strong>, as sinusoids of
+            solution: <strong>add position into the embedding itself</strong>, as sinusoids of
             geometrically spaced frequencies. Every position gets a unique waveform
             fingerprint; relative offsets become linear transforms.
           </Lede>
@@ -135,7 +135,7 @@ export function IdeaSection() {
         <ArchDiagram />
 
         <Reveal>
-          <BlockLabel>Why this wins on paper — literally Table 1</BlockLabel>
+          <BlockLabel>Why it wins asymptotically — the paper's Table 1</BlockLabel>
         </Reveal>
         <Reveal>
           <div className="mt-[26px] overflow-x-auto">
@@ -175,8 +175,8 @@ export function IdeaSection() {
           <Body>
             Yes, self-attention is quadratic in sequence length — but for 2017 translation,
             sentences (<Mono>n ≈ 70</Mono>) were far shorter than the model width (
-            <Mono>d = 512</Mono>), so <Mono>n²d</Mono> beat <Mono>nd²</Mono> handily. The
-            quadratic term was a bargain then. It becomes the villain of Part 08.
+            <Mono>d = 512</Mono>), so <Mono>n²d</Mono> beat <Mono>nd²</Mono> comfortably. The
+            quadratic term was a worthwhile trade then. It becomes the central problem of Part 08.
           </Body>
         </Reveal>
       </Wrap>

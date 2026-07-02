@@ -17,10 +17,12 @@ export function ImbalanceBars() {
 
   return (
     <div ref={ref} className="mt-14">
-      <H3>…and the data is wildly lopsided</H3>
+      <H3>…and the training data is highly unbalanced</H3>
       <p className="mb-5 max-w-[60ch] text-[15px] text-(--soft)">
-        Parallel corpora exist where politics and commerce created them. The paper's own two
-        benchmarks differ by 8×; most of the world's pairs sit near zero.
+        Translation models learn from pairs of sentences with their human translations. That data
+        is a byproduct of history — abundant for a few politically and economically connected
+        language pairs, scarce for the rest. The paper's own two benchmarks differ by 8×; most of
+        the world's language pairs have almost none.
       </p>
       {ROWS.map((r) => (
         <div

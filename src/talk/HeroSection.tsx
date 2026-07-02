@@ -181,8 +181,9 @@ export function HeroSection() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-[38px] max-w-[56ch] text-[clamp(1rem,1.4vw,1.2rem)] text-(--soft)">
-            Eight people at Google threw out recurrence, bet everything on attention, and ended up
-            with the architecture behind almost every model since.
+            In 2017, eight researchers at Google discarded recurrence entirely and relied on
+            attention alone — producing the architecture that underlies nearly every model built
+            since.
           </p>
         </Reveal>
         <Reveal delay={0.2}>

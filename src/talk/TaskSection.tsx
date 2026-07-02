@@ -30,15 +30,14 @@ export function TaskSection() {
           <Eyebrow accent="clay">Part 01 · The task</Eyebrow>
         </Reveal>
         <Reveal>
-          <H2>Turn one sequence into another.</H2>
+          <H2>Mapping one sequence to another.</H2>
         </Reveal>
         <Reveal>
           <Lede>
             The paper addresses the task of <strong>sequence transduction</strong>: map a
-            variable-length
-            input sequence to a variable-length output sequence, where the alignment between the
-            two is latent — nobody tells the model which output token corresponds to which input
-            token.
+            variable-length input sequence to a variable-length output sequence, where the
+            alignment between the two is latent — the model is given no explicit correspondence
+            between output and input tokens.
           </Lede>
         </Reveal>
 
@@ -71,11 +70,11 @@ export function TaskSection() {
 
         <Reveal>
           <Body>
-            Machine translation is the headline act — it's what the paper benchmarks — but the
+            Machine translation is the primary benchmark — it's what the paper evaluates — but the
             same formulation covers parsing (the paper's own generalization test: English →
             constituency trees), summarization, speech-to-text, and later code, proteins, and
-            images. Language modeling is the degenerate case where input and output are the same
-            sequence, shifted by one. <em>Hold that thought for the next talk.</em>
+            images. Language modeling is the special case where input and output are the same
+            sequence, shifted by one. <em>We return to this in the next talk.</em>
           </Body>
         </Reveal>
       </Wrap>

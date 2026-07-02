@@ -13,14 +13,14 @@ export function GoogleSection() {
           <Eyebrow accent="olive">Part 03 · Why Google, why then</Eyebrow>
         </Reveal>
         <Reveal>
-          <H2>Translate was drowning in its own success.</H2>
+          <H2>Translate was straining under its own scale.</H2>
         </Reveal>
         <Reveal>
           <Lede>
             Google Translate served <strong>103 languages</strong> and over{' '}
-            <strong>100 billion words a day</strong>. The 2016 neural system (GNMT) beat
-            phrase-based translation — at brutal cost: LSTM stacks trained for days on ~100 GPUs,{' '}
-            <em>per direction</em>. Now do the math on directions.
+            <strong>100 billion words a day</strong>. The 2016 neural system (GNMT) surpassed
+            phrase-based translation — at steep cost: LSTM stacks trained for days on ~100 GPUs,{' '}
+            <em>per direction</em>. The cost compounds across every direction.
           </Lede>
         </Reveal>
 
@@ -36,7 +36,7 @@ export function GoogleSection() {
             <strong>trains fast enough to iterate</strong>,{' '}
             <strong>parallelizes across cheap accelerators</strong>, and{' '}
             <strong>generalizes across languages</strong> instead of memorizing one pair. That is
-            the shape of the thing they went looking for.
+            the architecture they set out to find.
           </Body>
         </Reveal>
       </Wrap>

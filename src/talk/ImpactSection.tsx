@@ -26,9 +26,9 @@ const ITEMS: TimelineItem[] = [
     title: 'BERT: keep only the encoder',
     body: (
       <>
-        Bidirectional pre-training + fine-tuning sweeps every NLP benchmark and lands inside Google
-        Search. First proof that the blueprint transfers beyond translation. (GPT-1 quietly keeps
-        only the <em>decoder</em>…)
+        Bidirectional pre-training + fine-tuning sets new records across NLP benchmarks and is
+        deployed in Google Search. First proof that the blueprint transfers beyond translation.
+        (GPT-1 quietly keeps only the <em>decoder</em>…)
       </>
     ),
   },
@@ -42,8 +42,8 @@ const ITEMS: TimelineItem[] = [
     ),
     body: (
       <>
-        Decoder-only scaling, language modeling as the universal task: that story belongs to the{' '}
-        <strong>next talk in this seminar</strong>. No spoilers here.
+        Decoder-only scaling, language modeling as the universal task: that material belongs to
+        the <strong>next talk in this seminar</strong>.
       </>
     ),
   },
@@ -52,9 +52,9 @@ const ITEMS: TimelineItem[] = [
     title: 'ViT: an image is worth 16×16 words',
     body: (
       <>
-        Chop an image into patches, call them tokens, feed the plain 2017 encoder. CNNs&apos;
-        decade of dominance in vision ends. Scaling laws (Kaplan et al.) make “just make it bigger”
-        a research program.
+        Divide an image into patches, treat them as tokens, feed the plain 2017 encoder. CNNs&apos;
+        decade of dominance in vision ends. Scaling laws (Kaplan et al.) make scale itself a
+        research program.
       </>
     ),
   },
@@ -63,8 +63,8 @@ const ITEMS: TimelineItem[] = [
     title: 'AlphaFold 2: attention over proteins',
     body: (
       <>
-        Attention over residue pairs cracks protein structure prediction — later a Nobel Prize in
-        Chemistry. The clearest sign this is a general computation, not a language trick.
+        Attention over residue pairs solves protein structure prediction — later a Nobel Prize in
+        Chemistry. The clearest sign this is a general computation, not merely a language technique.
       </>
     ),
   },
@@ -74,8 +74,8 @@ const ITEMS: TimelineItem[] = [
     body: (
       <>
         Speech recognition falls to an off-the-shelf encoder–decoder Transformer (Whisper).
-        FlashAttention makes exact attention IO-efficient. And a certain chat product makes the
-        architecture a household topic.
+        FlashAttention makes exact attention IO-efficient. And a widely adopted chat product brings
+        the architecture into public awareness.
       </>
     ),
   },
@@ -85,8 +85,8 @@ const ITEMS: TimelineItem[] = [
     body: (
       <>
         Open weights (LLaMA and descendants), multimodal models, code assistants, reasoning models
-        — plus the first credible challengers (Mamba, diffusion LMs) which, tellingly, still keep
-        some attention layers. Onward to the bills.
+        — plus the first credible challengers (Mamba, diffusion LMs) which, tellingly, still retain
+        some attention layers. We turn next to the costs.
       </>
     ),
   },
@@ -116,16 +116,16 @@ export function ImpactSection() {
     <Section id="impact" variant="tint">
       <Wrap>
         <Reveal>
-          <Eyebrow accent="olive">Part 07 · Blast radius</Eyebrow>
+          <Eyebrow accent="olive">Part 07 · Impact</Eyebrow>
         </Reveal>
         <Reveal>
-          <H2>A translation paper ate the whole field.</H2>
+          <H2>A translation paper reshaped the entire field.</H2>
         </Reveal>
         <Reveal>
           <Lede>
             Roughly 200,000 citations later, the Transformer is less an architecture than a
-            substrate. The pattern below repeats: someone takes the 2017 blueprint, deletes half of
-            it, points it at a new modality, and it wins.
+            substrate. A recurring pattern follows: take the 2017 blueprint, remove part of it,
+            apply it to a new modality, and it succeeds.
           </Lede>
         </Reveal>
 

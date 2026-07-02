@@ -26,7 +26,7 @@ const STATS: { num: ReactNode; label: ReactNode; accent: Accent }[] = [
 
 const GPUS: { tag: string; name: string; vram: string; spec: string; body: ReactNode }[] = [
   {
-    tag: '2016 · what they had',
+    tag: '2016 · hardware available',
     name: 'Tesla P100',
     vram: `${PAPER.gpuMemoryGB} GB`,
     spec: '~21 TFLOPS fp16',
@@ -44,8 +44,8 @@ const GPUS: { tag: string; name: string; vram: string; spec: string; body: React
     spec: '~2,000 TFLOPS fp8',
     body: (
       <>
-        ~100× the arithmetic of a P100. The base Transformer's 12-hour run is now a lunch break on
-        a single card.
+        ~100× the arithmetic of a P100. The base Transformer's 12-hour run now completes in under
+        an hour on a single card.
       </>
     ),
   },
@@ -57,7 +57,7 @@ const GPUS: { tag: string; name: string; vram: string; spec: string; body: React
     body: (
       <>
         One chip ≈ 200 P100s. The entire landmark <em>big</em> run — {PAPER.flopsBig} FLOPs — is
-        roughly <strong>an afternoon on one B200</strong>.
+        roughly <strong>a few hours on a single B200</strong>.
       </>
     ),
   },
@@ -71,13 +71,13 @@ export function TrainingSection() {
           <Eyebrow accent="sky">Part 06 · The recipe</Eyebrow>
         </Reveal>
         <Reveal>
-          <H2>Twelve hours. Eight GPUs. New state of the art.</H2>
+          <H2>Twelve hours on eight GPUs, and a new state of the art.</H2>
         </Reveal>
         <Reveal>
           <Lede>
-            The headline wasn't only quality — it was quality <em>per unit of compute</em>. The
-            big model hit {PAPER.bleuEnDe} BLEU on English→German at less than ¼ the training cost
-            of every previous best.
+            The result wasn't only quality — it was quality <em>per unit of compute</em>. The
+            big model reached {PAPER.bleuEnDe} BLEU on English→German at less than ¼ the training
+            cost of every previous best.
           </Lede>
         </Reveal>
 
@@ -98,8 +98,8 @@ export function TrainingSection() {
                 Adam (<Mono>β₂=0.98</Mono>) with the now-famous schedule: linear warmup for{' '}
                 {PAPER.warmupSteps.toLocaleString('en-US')} steps, then inverse-square-root decay.
                 Plus dropout {PAPER.dropout} and <strong>label smoothing {PAPER.labelSmoothing}</strong>{' '}
-                — which <em>hurts perplexity but improves BLEU</em>. They optimized the metric that
-                mattered.
+                — which <em>worsens perplexity but improves BLEU</em>. They optimized the metric
+                that mattered.
               </p>
               <LRChart />
             </Card>
@@ -107,16 +107,16 @@ export function TrainingSection() {
           <Reveal delay={0.08}>
             <Card>
               <Tag accent="sky">Batching</Tag>
-              <H3>What went in</H3>
+              <H3>Data and batching</H3>
               <p>
                 Batches of ~25,000 source + 25,000 target tokens, sentences bucketed by length.
-                EN–FR used {PAPER.enfrSentencePairs} pairs with a {PAPER.enfrVocab} vocab. Final
-                models average the last few checkpoints — no exotic tricks, everything reproducible
-                on one box.
+                EN–FR used {PAPER.enfrSentencePairs} pairs with a {PAPER.enfrVocab} vocabulary.
+                Final models average the last few checkpoints — no unusual techniques, fully
+                reproducible on a single machine.
               </p>
               <p className="mt-3">
-                Total training compute, big model: <Mono>{PAPER.flopsBig} FLOPs</Mono>. Remember
-                that number.
+                Total training compute, big model: <Mono>{PAPER.flopsBig} FLOPs</Mono>. Note this
+                figure.
               </p>
             </Card>
           </Reveal>

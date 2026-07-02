@@ -2,6 +2,7 @@ import { Section, Wrap } from '../components/Section'
 import { Eyebrow, H2, H3, Lede, Body } from '../components/Type'
 import { Reveal } from '../components/Reveal'
 import { Card, Tag } from '../components/Card'
+import { Math } from '../components/Math'
 
 /** Part 04 — Lineage: the three inherited ideas and the daring subtraction. */
 export function LineageSection() {
@@ -38,8 +39,8 @@ export function LineageSection() {
               <H3>Attention as alignment</H3>
               <p>
                 Bahdanau et al. let the decoder &ldquo;look back&rdquo; at all encoder states with
-                learned soft weights — killing the fixed-vector bottleneck. Attention was born as an{' '}
-                <em>add-on to</em> RNNs.
+                learned soft weights — eliminating the fixed-vector bottleneck. Attention was
+                introduced as an <em>add-on to</em> RNNs.
               </p>
             </Card>
           </Reveal>
@@ -49,8 +50,8 @@ export function LineageSection() {
               <H3>Autoregressive factorization</H3>
               <p>
                 Generate y one token at a time, each conditioned on everything before:{' '}
-                <span className="font-mono text-[0.85em]">p(y)=∏ p(yᵢ|y{'<'}ᵢ, x)</span>. The
-                Transformer doesn&rsquo;t touch this — remember that for Part 08.
+                <Math>{String.raw`p(y)=\textstyle\prod_i p(y_i \mid y_{<i},\, x)`}</Math>. The
+                Transformer leaves this unchanged — a point we return to in Part 08.
               </p>
             </Card>
           </Reveal>
@@ -131,7 +132,7 @@ export function LineageSection() {
                 fontSize={11}
                 fontWeight={500}
               >
-                the daring subtraction
+                the key subtraction
               </text>
               <text x={610} y={140} textAnchor="middle" fontSize={26} className="fill-olive">
                 =

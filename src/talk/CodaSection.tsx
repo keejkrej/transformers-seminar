@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import { Section, Wrap } from '../components/Section'
 import { Body, Eyebrow, H2, Lede } from '../components/Type'
 import { Reveal } from '../components/Reveal'
@@ -34,8 +33,8 @@ export function CodaSection() {
         <Reveal>
           <Body className="text-(--note)!">
             Next talk in this seminar: <strong className="text-fog">GPT-2</strong> — what happens
-            when you throw away the encoder, keep only the masked half, and bet everything on
-            next-token prediction.
+            when the encoder is removed, only the masked half is retained, and the model commits
+            fully to next-token prediction.
           </Body>
         </Reveal>
 
@@ -85,11 +84,11 @@ export function CodaSection() {
 
         <Reveal>
           <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-1.5 text-[13.5px] text-(--note)">
-            <span>Go deeper — extension modules:</span>
+            <span>Extension modules — jump back up:</span>
             {MODULES.map((m) => (
-              <Link key={m.slug} to="/m/$slug" params={{ slug: m.slug }} className={REF_LINK}>
+              <a key={m.slug} href={`#${m.slug}`} className={REF_LINK}>
                 {m.num} · {m.title}
-              </Link>
+              </a>
             ))}
           </div>
         </Reveal>

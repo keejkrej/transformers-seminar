@@ -18,7 +18,7 @@ const DEMOS = [
     b: 'sorted(xs, reverse=True)',
   },
   {
-    lab: 'English → parse tree (the paper’s own stunt)',
+    lab: 'English → parse tree (the paper’s own generalization test)',
     a: 'The cat sat.',
     b: '(S (NP The cat) (VP sat) .)',
   },
