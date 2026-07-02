@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Anthropic brand palette — the only colors on this site */
+  --color-ink: #141413;
+  --color-paper: #faf9f5;
+  --color-mist: #e8e6dc; /* light gray */
+  --color-stone: #b0aea5; /* mid gray */
+  --color-clay: #d97757; /* primary accent */
+  --color-sky: #6a9bcc; /* secondary accent */
+  --color-olive: #788c5d; /* tertiary accent */
+  --color-inksoft: #3d3d38; /* body text on light */
+  --color-fog: #cfcdc3; /* body text on dark */
+  --color-carddark: #1e1e1b;
+  --color-linedark: #35352f;
+
+  /* Font roles — never declare font-family anywhere else */
+  --font-display: 'Poppins', Arial, sans-serif;
+  --font-body: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* Section variant context: kit components consume these vars so cards,
+   notes, and soft text adapt to light/dark sections automatically. */
+.sec-paper,
+.sec-tint {
+  --soft: var(--color-inksoft);
+  --card-bg: var(--color-paper);
+  --card-line: #dedbd0;
+  --note: var(--color-stone);
+  --wire: #dedbd0;
+}
+.sec-dark {
+  --soft: var(--color-fog);
+  --card-bg: var(--color-carddark);
+  --card-line: var(--color-linedark);
+  --note: #8a887e;
+  --wire: var(--color-linedark);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-paper text-ink font-body overflow-x-hidden;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  ::selection {
+    @apply bg-clay text-paper;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-clay);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  input[type='range'] {
+    accent-color: var(--color-clay);
+    height: 26px;
+  }
+}
+
+/* KaTeX inherits the section's text color; keep its size in check */
+.katex {
+  font-size: 1.06em;
+}

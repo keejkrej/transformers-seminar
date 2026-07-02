@@ -1,0 +1,36 @@
+{
+  "name": "transformers-seminar",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@fontsource/lora": "^5.2.5",
+    "@fontsource/poppins": "^5.2.5",
+    "@tanstack/react-router": "^1.130.0",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "katex": "^0.16.22",
+    "motion": "^12.15.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.10",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.7",
+    "@types/katex": "^0.16.7",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}
