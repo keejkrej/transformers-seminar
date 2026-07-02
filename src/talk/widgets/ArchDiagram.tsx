@@ -285,8 +285,8 @@ export function ArchDiagram() {
             <Blk x={270} y={100} w={150} h={28} hot={false} label="Add & Norm" />
 
             {/* output */}
-            <Blk x={270} y={36} w={150} h={28} hot={hot.has('g-out')} label="Linear + Softmax" />
-            <GLabel x={345} y={24} mid hot={hot.has('g-out')}>
+            <Blk x={270} y={24} w={150} h={28} hot={hot.has('g-out')} label="Linear + Softmax" />
+            <GLabel x={345} y={14} mid hot={hot.has('g-out')}>
               output probabilities
             </GLabel>
 

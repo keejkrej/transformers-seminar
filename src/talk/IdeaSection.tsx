@@ -3,11 +3,13 @@ import { Section, Wrap } from '../components/Section'
 import { Body, Eyebrow, H2, Lede, Note } from '../components/Type'
 import { Reveal } from '../components/Reveal'
 import { Card, Tag } from '../components/Card'
+import { Code } from '../components/Code'
 import { Math } from '../components/Math'
 import { AttentionPlayground } from './widgets/AttentionPlayground'
 import { MultiHeadDiagram } from './widgets/MultiHeadDiagram'
 import { PECanvas } from './widgets/PECanvas'
 import { ArchDiagram } from './widgets/ArchDiagram'
+import { TranslationWalkthrough } from './widgets/TranslationWalkthrough'
 
 /** Clay small-caps label with a leading dash — separates the blocks of Part 05. */
 function BlockLabel({ first = false, children }: { first?: boolean; children: ReactNode }) {
@@ -105,6 +107,24 @@ export function IdeaSection() {
           ))}
         </div>
         <Reveal>
+          <Body>
+            The formula is also the implementation. Two matrix multiplies with a softmax between
+            them — the entire mechanism is shorter than its own explanation:
+          </Body>
+        </Reveal>
+        <Reveal>
+          <Code label="scaled dot-product attention · PyTorch" className="mt-[26px]">
+            {`
+def attention(Q, K, V, mask=None):
+    scores = Q @ K.transpose(-2, -1) / math.sqrt(K.size(-1))  # QK^T / sqrt(d_k)
+    if mask is not None:                                      # decoder only:
+        scores = scores.masked_fill(mask == 0, -torch.inf)    #   hide the future
+    return scores.softmax(dim=-1) @ V                         # weigh the values
+            `}
+          </Code>
+        </Reveal>
+
+        <Reveal>
           <BlockLabel>Multi-head attention: several relations at once</BlockLabel>
         </Reveal>
         <Reveal>
@@ -128,6 +148,17 @@ export function IdeaSection() {
               {String.raw`\begin{aligned}\mathrm{MultiHead}(Q,K,V)&=\mathrm{Concat}(\mathrm{head}_1,\ldots,\mathrm{head}_8)\,W^{O}\\[3pt]\mathrm{head}_i&=\mathrm{Attention}(QW_i^{Q},\,KW_i^{K},\,VW_i^{V})\end{aligned}`}
             </Math>
           </div>
+        </Reveal>
+        <Reveal>
+          <Code label="multi-head = slice, attend, concatenate" className="mt-[26px]">
+            {`
+Q = (x @ W_Q).view(n, h, d // h)                  # slice the width: 512 = 8 x 64
+K = (x @ W_K).view(n, h, d // h)                  # (same attention() as above,
+V = (x @ W_V).view(n, h, d // h)                  #  once per 64-dim slice)
+heads = [attention(Q[:, i], K[:, i], V[:, i]) for i in range(h)]
+out = torch.cat(heads, dim=-1) @ W_O              # concatenate and mix
+            `}
+          </Code>
         </Reveal>
         <Reveal>
           <MultiHeadDiagram />
@@ -202,6 +233,20 @@ export function IdeaSection() {
           </Body>
         </Reveal>
         <Reveal>
+          <Code label="the whole positional-encoding table · NumPy" className="mt-[26px]">
+            {`
+pos = np.arange(n)[:, None]           # which token           -- shape (n, 1)
+i   = np.arange(d // 2)[None, :]      # which dimension pair  -- shape (1, d/2)
+angle = pos / 10000 ** (2 * i / d)    # one wavelength per pair, 2pi ... 10000*2pi
+
+PE = np.empty((n, d))
+PE[:, 0::2] = np.sin(angle)           # even coordinates
+PE[:, 1::2] = np.cos(angle)           # odd coordinates
+x = embed(tokens) + PE                # added once, below the first layer
+            `}
+          </Code>
+        </Reveal>
+        <Reveal>
           <Body>
             The wavelengths form a geometric progression, from 2π up to 10000·2π — that spread is
             the point. The fast waves (short wavelength) change noticeably from one token to the
@@ -265,6 +310,45 @@ export function IdeaSection() {
           <BlockLabel>The full machine</BlockLabel>
         </Reveal>
         <ArchDiagram />
+
+        <Reveal>
+          <BlockLabel>The machine at work: one sentence, end to end</BlockLabel>
+        </Reveal>
+        <Reveal>
+          <Lede>
+            One parallel pass, then a loop. The encoder reads the whole English sentence at once
+            and produces one contextual vector per token — those vectors then sit fixed. The
+            decoder starts from a <strong>start-of-sequence token</strong> <Mono>‹s›</Mono> and
+            builds the German one word at a time: masked self-attention re-reads what it has
+            written so far, <strong>cross-attention</strong> sends queries from the German side
+            into the frozen English vectors (they supply the keys and values), and the softmax
+            names the next token — which is appended to the decoder's own input for the following
+            step, until the model emits <Mono>‹/s›</Mono>.
+          </Lede>
+        </Reveal>
+        <Reveal>
+          <TranslationWalkthrough />
+        </Reveal>
+        <Reveal>
+          <Body>
+            Step through it — or click any German token to revisit the cross-attention that
+            produced it. The step worth the detour is <em>unterzeichnet</em>: German pushes the
+            participle to the end of the clause, so the decoder must reach back to “signed”,
+            seven tokens away, at the moment word order diverges most. That reach <em>is</em> the
+            alignment matrix of the 2014 attention papers, reborn as one head of cross-attention.
+          </Body>
+        </Reveal>
+        <Reveal>
+          <Body>
+            One distinction keeps the whole design honest: this token-by-token loop is{' '}
+            <strong>inference only</strong>. During training no loop runs — the full German
+            sentence is fed in at once, shifted one position right behind <Mono>‹s›</Mono>, and
+            the causal mask from step 4 lets every position predict its successor{' '}
+            <em>simultaneously</em>. Autoregressive semantics, parallel compute. (At test time
+            the paper decodes with beam search, width 4, rather than greedily taking each
+            argmax.)
+          </Body>
+        </Reveal>
 
         <Reveal>
           <BlockLabel>Why it wins asymptotically — the paper's Table 1</BlockLabel>

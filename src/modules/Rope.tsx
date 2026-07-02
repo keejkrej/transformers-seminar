@@ -4,6 +4,7 @@ import { Section, Wrap } from '../components/Section'
 import { Reveal } from '../components/Reveal'
 import { Body, Eyebrow, H2, H3, Lede, Note } from '../components/Type'
 import { Card, Stat, Tag } from '../components/Card'
+import { Code } from '../components/Code'
 import { Math } from '../components/Math'
 import RopeDials from './widgets/rope-dials'
 
@@ -221,6 +222,19 @@ export default function Rope() {
               hypothesis upgraded to a guarantee, moved from addition on embeddings to rotation
               inside every attention layer.
             </Body>
+            <Code label="rotary position embedding · applied to q and k, every layer" accent="sky" className="mt-[26px]">
+              {`
+def rope(x, pos):                          # x: a query or key, shape (n, d)
+    j = torch.arange(d // 2)
+    theta = 10000.0 ** (-2 * j / d)        # the 2017 spectrum, unchanged
+    m = pos[:, None] * theta               # pair j at position m turns by m*theta_j
+    x1, x2 = x[..., 0::2], x[..., 1::2]    # each pair: a point in a plane
+    return torch.cat([x1 * m.cos() - x2 * m.sin(),
+                      x1 * m.sin() + x2 * m.cos()], dim=-1)
+
+q, k = rope(x @ W_q, pos), rope(x @ W_k, pos)   # nothing added to the embeddings
+              `}
+            </Code>
           </Reveal>
 
           <Reveal delay={0.08}>

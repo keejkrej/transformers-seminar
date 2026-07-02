@@ -1,6 +1,7 @@
 import { Section, Wrap } from '../components/Section'
 import { Eyebrow, H2, H3, Lede } from '../components/Type'
 import { Card, Tag, Stat } from '../components/Card'
+import { Code } from '../components/Code'
 import { Reveal } from '../components/Reveal'
 import { PAPER } from '../data/paper'
 import { LRChart } from './widgets/LRChart'
@@ -101,6 +102,14 @@ export function TrainingSection() {
                 — which <em>worsens perplexity but improves BLEU</em>. They optimized the metric
                 that mattered.
               </p>
+              <Code tone="ink" className="mt-4">
+                {`
+lr = d_model**-0.5 * min(
+    step**-0.5,           # decay branch
+    step * warmup**-1.5,  # warmup branch
+)
+                `}
+              </Code>
               <LRChart />
             </Card>
           </Reveal>
