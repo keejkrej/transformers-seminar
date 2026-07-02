@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Annotate } from '../components/Annotate'
 import { Rail, TopProgress } from '../components/Rail'
 import { TALK_SECTIONS } from '../data/talk'
 import { HeroSection } from '../talk/HeroSection'
@@ -38,9 +39,10 @@ export function TalkPage() {
   }, [])
 
   return (
-    <main>
+    <main className="relative">
       <TopProgress />
       <Rail />
+      <Annotate />
       <HeroSection />
       <TaskSection />
       <BeforeSection />

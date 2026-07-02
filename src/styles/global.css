@@ -70,3 +70,9 @@
 .katex {
   font-size: 1.06em;
 }
+
+/* Reader annotations (Annotate.tsx): persistent text highlights. The
+   translucent clay tint stays legible over both paper and dark sections. */
+::highlight(talk-annotations) {
+  background-color: rgba(217, 119, 87, 0.32);
+}
