@@ -102,14 +102,34 @@ export function PECanvas() {
         aria-label="Position along the sequence"
         className="mt-[18px] w-full"
       />
-      <div aria-hidden="true" className="mt-3.5 flex gap-[3px]">
+      <div className="mt-5 flex items-baseline justify-between gap-4">
+        <span className="font-display text-[11px] font-semibold tracking-[0.14em] uppercase text-(--note)">
+          The PE vector at this position · one cell per dimension
+        </span>
+        <span
+          aria-hidden="true"
+          className="flex flex-none items-center gap-1.5 font-mono text-[11px] text-(--note)"
+        >
+          −1
+          <span className="inline-block h-[11px] w-[26px] rounded-[3px] bg-[linear-gradient(90deg,var(--color-carddark),var(--color-clay))]" />
+          +1
+        </span>
+      </div>
+      <div aria-hidden="true" className="mt-2 flex gap-[3px]">
         {cells.map((bg, i) => (
           <div key={i} className="h-[26px] flex-1 rounded-[3px]" style={{ background: bg }} />
         ))}
       </div>
+      <div aria-hidden="true" className="mt-1.5 flex justify-between font-mono text-[11px] text-(--note)">
+        <span>dim 0 · fastest wave</span>
+        <span>dim 15 · slowest</span>
+      </div>
       <Note className="text-[14px]">
-        Drag the slider: the vertical stripe is the “barcode” a token at that position carries
-        into the model.
+        The strip is the encoding vector the token at the dashed cursor carries into the model:
+        each cell is one embedding dimension read off its wave at that position (the canvas shows
+        four of the sixteen), with brightness standing in for the value. Drag the slider — the
+        fast dimensions on the left flicker between tokens while the slow ones on the right drift
+        across the whole sequence.
       </Note>
     </div>
   )

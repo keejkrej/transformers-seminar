@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Section, Wrap } from '../components/Section'
-import { Body, Eyebrow, H2, Lede } from '../components/Type'
+import { Body, Eyebrow, H2, Lede, Note } from '../components/Type'
 import { Reveal } from '../components/Reveal'
 import { Card, Tag } from '../components/Card'
 import { Math } from '../components/Math'
@@ -181,13 +181,60 @@ export function IdeaSection() {
         <Reveal>
           <Lede>
             Delete recurrence and word order vanishes — “dog bites man” = “man bites dog”. The
-            solution: <strong>add position into the embedding itself</strong>, as sinusoids of
-            geometrically spaced frequencies. Every position gets a unique waveform
-            fingerprint; relative offsets become linear transforms.
+            solution: <strong>add position into the embedding itself</strong>. Each embedding
+            dimension pair oscillates as a sinusoid with its own wavelength:
           </Lede>
         </Reveal>
         <Reveal>
+          <div className="mt-[26px] rounded-[14px] border border-(--card-line) bg-(--card-bg) px-[30px] py-6 text-center text-[clamp(0.95rem,2.2vw,1.35rem)]">
+            <Math block>
+              {String.raw`PE_{(pos,\,2i)}=\sin\!\left(\frac{pos}{10000^{2i/d}}\right),\qquad PE_{(pos,\,2i+1)}=\cos\!\left(\frac{pos}{10000^{2i/d}}\right)`}
+            </Math>
+          </div>
+        </Reveal>
+        <Reveal>
+          <Body>
+            Two indices, two axes: <Mono>pos</Mono> says <em>which token</em> — the position in
+            the sequence — while <Mono>i</Mono> says <em>which coordinate of the embedding
+            vector</em>, indexing its <Mono>d/2</Mono> dimension pairs (pair i holds a sine and a
+            cosine at the same wavelength). In the demo below, each curve is one value of{' '}
+            <Mono>i</Mono>; the slider moves <Mono>pos</Mono>.
+          </Body>
+        </Reveal>
+        <Reveal>
+          <Body>
+            The wavelengths form a geometric progression, from 2π up to 10000·2π — that spread is
+            the point. The fast waves (short wavelength) change noticeably from one token to the
+            next, so they distinguish <em>neighbors</em>; the slow waves barely move across a
+            sentence, so they encode <em>coarse regions</em> of the sequence. It is a smooth
+            analog of a binary counter, where low bits flip fast and high bits flip rarely.
+            Reading all dimensions at once — the vertical slice in the demo below — gives every
+            position a unique fingerprint, and because sines and cosines shift by rotation, any
+            fixed offset is a linear transform: the hook the paper hoped attention would use.
+          </Body>
+        </Reveal>
+        <Reveal>
+          <Note>
+            Two asides for the physically minded. This is a <em>Fourier-feature map</em>: a scalar
+            coordinate represented by its projections onto a bank of sinusoids across frequencies
+            — the same device NeRF and Segment Anything later used for spatial coordinates. And
+            there is a second-quantization reading: attention treats tokens as an unordered
+            collection — indistinguishable particles — so order must live in each token's state
+            rather than in a slot index, the way occupation of a mode replaces particle labels.
+          </Note>
+        </Reveal>
+        <Reveal>
           <PECanvas />
+        </Reveal>
+        <Reveal>
+          <Body>
+            Sinusoids are not the only option — the paper also tested simply{' '}
+            <strong>learning an embedding vector per position</strong>, as ordinary trainable
+            parameters, and measured nearly identical quality (Table 3, row E). Sinusoids won the
+            tie on the hope of generalizing past trained lengths. History split the difference:
+            BERT, GPT-2, and ViT all shipped learned position embeddings; the sinusoids' true
+            legacy is their frequency spectrum, which lives on inside RoPE.
+          </Body>
         </Reveal>
         <Reveal>
           <Body>
