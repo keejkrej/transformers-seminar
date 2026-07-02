@@ -119,7 +119,7 @@ export default function ContinualLearning() {
       bare
     >
       {/* ————— 1 · The debt ————— */}
-      <Section id="debt" variant="paper">
+      <Section id="m5-debt" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="sky">The debt · staleness</Eyebrow>
@@ -167,7 +167,7 @@ export default function ContinualLearning() {
       </Section>
 
       {/* ————— 2 · Classic mechanisms ————— */}
-      <Section id="classics" variant="tint">
+      <Section id="m5-classics" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="sky">Mechanism · 1989–2018</Eyebrow>
@@ -228,7 +228,7 @@ export default function ContinualLearning() {
       </Section>
 
       {/* ————— 3 · LLM-era practice ————— */}
-      <Section id="practice" variant="paper">
+      <Section id="m5-practice" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="sky">Practice · 2023–2025</Eyebrow>
@@ -300,7 +300,7 @@ export default function ContinualLearning() {
       </Section>
 
       {/* ————— 4 · Interactive playground ————— */}
-      <Section id="playground" variant="dark">
+      <Section id="m5-playground" variant="dark">
         <Wrap>
           <Reveal>
             <Eyebrow accent="sky">Interactive · the dilemma</Eyebrow>
@@ -331,7 +331,7 @@ export default function ContinualLearning() {
       </Section>
 
       {/* ————— 5 · State of play 2026 ————— */}
-      <Section id="frontier" variant="tint">
+      <Section id="m5-frontier" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="sky">State of play · 2026</Eyebrow>

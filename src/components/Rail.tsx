@@ -7,6 +7,7 @@ import { TALK_SECTIONS } from '../data/talk'
  */
 export function Rail() {
   const [active, setActive] = useState('hero')
+  const [onDark, setOnDark] = useState(true)
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -24,7 +25,30 @@ export function Rail() {
     return () => io.disconnect()
   }, [])
 
-  const onDark = TALK_SECTIONS.find((s) => s.id === active)?.dark ?? false
+  // Label legibility follows the actual section under the viewport center, not
+  // the active nav item — module bodies alternate light/dark between their
+  // (dark) hero anchors, so the nav flag alone would mis-color the labels.
+  useEffect(() => {
+    const compute = () => {
+      const cy = window.innerHeight / 2
+      let dark = false
+      for (const sec of document.querySelectorAll('section')) {
+        const r = sec.getBoundingClientRect()
+        if (r.top <= cy && r.bottom >= cy) {
+          dark = sec.classList.contains('sec-dark')
+          break
+        }
+      }
+      setOnDark(dark)
+    }
+    compute()
+    addEventListener('scroll', compute, { passive: true })
+    addEventListener('resize', compute)
+    return () => {
+      removeEventListener('scroll', compute)
+      removeEventListener('resize', compute)
+    }
+  }, [])
 
   return (
     <nav

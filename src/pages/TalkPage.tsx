@@ -11,6 +11,8 @@ import { TrainingSection } from '../talk/TrainingSection'
 import { ImpactSection } from '../talk/ImpactSection'
 import { DebtSection } from '../talk/DebtSection'
 import { CodaSection } from '../talk/CodaSection'
+import { MODULES } from '../data/modules'
+import { MODULE_COMPONENTS } from '../modules/index'
 
 /** The full talk: one continuous scroll, sections in TALK_SECTIONS order. */
 export function TalkPage() {
@@ -48,6 +50,10 @@ export function TalkPage() {
       <TrainingSection />
       <ImpactSection />
       <DebtSection />
+      {MODULES.map((m) => {
+        const Module = MODULE_COMPONENTS[m.slug]
+        return <Module key={m.slug} />
+      })}
       <CodaSection />
     </main>
   )

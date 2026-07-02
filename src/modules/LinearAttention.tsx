@@ -147,7 +147,7 @@ export default function LinearAttention() {
       bare
     >
       {/* 01 — the debt and the kernel trick */}
-      <Section id="kernel-trick" variant="paper">
+      <Section id="m2-kernel-trick" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="olive">The debt · one forced matmul order</Eyebrow>
@@ -226,7 +226,7 @@ export default function LinearAttention() {
       </Section>
 
       {/* 02 — the matrix-valued state and its lineage */}
-      <Section id="one-line" variant="tint">
+      <Section id="m2-one-line" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="olive">The mechanism · fast weights</Eyebrow>
@@ -328,7 +328,7 @@ export default function LinearAttention() {
       </Section>
 
       {/* 03 — the recall wall */}
-      <Section id="recall-wall" variant="dark">
+      <Section id="m2-recall-wall" variant="dark">
         <Wrap>
           <Reveal>
             <Eyebrow accent="olive">The catch · measured 2023</Eyebrow>
@@ -418,7 +418,7 @@ export default function LinearAttention() {
       </Section>
 
       {/* 04 — interactive: fixed state vs growing cache */}
-      <Section id="demo" variant="paper">
+      <Section id="m2-demo" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="olive">Interactive · the core idea</Eyebrow>
@@ -453,7 +453,7 @@ export default function LinearAttention() {
       </Section>
 
       {/* 05 — state of play */}
-      <Section id="hybrids" variant="tint">
+      <Section id="m2-hybrids" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="olive">State of play · 2026</Eyebrow>

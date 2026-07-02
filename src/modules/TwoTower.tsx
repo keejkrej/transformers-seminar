@@ -70,7 +70,7 @@ export default function TwoTower() {
       bare
     >
       {/* ——— 01 · The debt ——— */}
-      <Section id="debt" variant="paper">
+      <Section id="m4-debt" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="clay">The debt · one token at a time</Eyebrow>
@@ -108,7 +108,7 @@ export default function TwoTower() {
       </Section>
 
       {/* ——— 02 · Lineage ——— */}
-      <Section id="lineage" variant="tint">
+      <Section id="m4-lineage" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="clay">Lineage · 2025–2026</Eyebrow>
@@ -170,7 +170,7 @@ export default function TwoTower() {
       </Section>
 
       {/* ——— 03 · Mechanism ——— */}
-      <Section id="mechanism" variant="paper">
+      <Section id="m4-mechanism" variant="paper">
         <Wrap>
           <Reveal>
             <Eyebrow accent="clay">Mechanism · arXiv:2606.26493</Eyebrow>
@@ -339,7 +339,7 @@ export default function TwoTower() {
       </Section>
 
       {/* ——— 04 · The decode race ——— */}
-      <Section id="race" variant="dark">
+      <Section id="m4-race" variant="dark">
         <Wrap>
           <Reveal>
             <Eyebrow accent="clay">Interactive · the decode race</Eyebrow>
@@ -369,7 +369,7 @@ export default function TwoTower() {
       </Section>
 
       {/* ——— 05 · Tradeoffs & state of play ——— */}
-      <Section id="tradeoffs" variant="tint">
+      <Section id="m4-tradeoffs" variant="tint">
         <Wrap>
           <Reveal>
             <Eyebrow accent="clay">The bill for paying the bill</Eyebrow>
