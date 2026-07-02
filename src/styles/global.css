@@ -13,6 +13,7 @@
   --color-fog: #cfcdc3; /* body text on dark */
   --color-carddark: #1e1e1b;
   --color-linedark: #35352f;
+  --color-inktint: #1c1c1a; /* lifted dark — the former "tint" sections */
 
   /* Font roles — never declare font-family anywhere else */
   --font-display: 'Poppins', Arial, sans-serif;
@@ -20,16 +21,8 @@
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
-/* Section variant context: kit components consume these vars so cards,
-   notes, and soft text adapt to light/dark sections automatically. */
-.sec-paper,
-.sec-tint {
-  --soft: var(--color-inksoft);
-  --card-bg: var(--color-paper);
-  --card-line: #dedbd0;
-  --note: var(--color-stone);
-  --wire: #dedbd0;
-}
+/* Section context: kit components consume these vars. The whole site is
+   dark, so there is a single palette. */
 .sec-dark {
   --soft: var(--color-fog);
   --card-bg: var(--color-carddark);
@@ -48,7 +41,7 @@
     }
   }
   body {
-    @apply bg-paper text-ink font-body overflow-x-hidden;
+    @apply bg-ink text-paper font-body overflow-x-hidden;
     font-size: 17px;
     line-height: 1.65;
   }

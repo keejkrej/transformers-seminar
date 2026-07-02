@@ -63,7 +63,7 @@ export function LangGraph() {
             y1={e.y1}
             x2={e.x2}
             y2={e.y2}
-            stroke="var(--color-ink)"
+            stroke="var(--color-fog)"
             strokeOpacity={e.o}
             strokeWidth={1}
           />

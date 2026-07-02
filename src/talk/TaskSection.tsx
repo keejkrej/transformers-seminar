@@ -8,8 +8,8 @@ import { TransductionDemo } from './widgets/TransductionDemo'
 function Tok({ ghost = false, children }: { ghost?: boolean; children: ReactNode }) {
   return (
     <span
-      className={`bg-paper rounded-[7px] border-[1.5px] px-3 py-2 font-mono text-sm ${
-        ghost ? 'border-stone text-stone border-dashed' : 'border-ink'
+      className={`rounded-[7px] border-[1.5px] bg-(--card-bg) px-3 py-2 font-mono text-sm ${
+        ghost ? 'border-stone text-stone border-dashed' : 'border-fog'
       }`}
     >
       {children}
@@ -51,7 +51,7 @@ export function TaskSection() {
               <Tok>xₙ</Tok>
             </div>
             <FlowArrow />
-            <div className="bg-ink text-paper font-display rounded-[9px] px-[22px] py-4 text-[13px] font-semibold tracking-[0.1em] uppercase">
+            <div className="bg-paper text-ink font-display rounded-[9px] px-[22px] py-4 text-[13px] font-semibold tracking-[0.1em] uppercase">
               {'learned map'}
             </div>
             <FlowArrow />

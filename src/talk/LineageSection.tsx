@@ -76,7 +76,7 @@ export function LineageSection() {
                 className="fill-none stroke-stone"
                 strokeWidth={1.5}
               />
-              <text x={120} y={85} textAnchor="middle" className="fill-ink">
+              <text x={120} y={85} textAnchor="middle" className="fill-paper">
                 seq2seq
               </text>
               <text
@@ -98,7 +98,7 @@ export function LineageSection() {
                 className="fill-none stroke-stone"
                 strokeWidth={1.5}
               />
-              <text x={120} y={175} textAnchor="middle" className="fill-ink">
+              <text x={120} y={175} textAnchor="middle" className="fill-paper">
                 RNN attention
               </text>
               <text
@@ -123,7 +123,7 @@ export function LineageSection() {
                 className="fill-none stroke-sky"
                 strokeWidth={1.5}
               />
-              <text x={450} y={130} textAnchor="middle" className="fill-ink">
+              <text x={450} y={130} textAnchor="middle" className="fill-paper">
                 − recurrence
               </text>
               <text
@@ -139,7 +139,7 @@ export function LineageSection() {
               <text x={610} y={140} textAnchor="middle" fontSize={26} className="fill-olive">
                 =
               </text>
-              <rect x={670} y={90} width={310} height={88} rx={12} className="fill-ink" />
+              <rect x={670} y={90} width={310} height={88} rx={12} className="fill-carddark stroke-clay" strokeWidth={1.5} />
               <text x={825} y={128} textAnchor="middle" className="fill-paper" fontSize={17}>
                 Transformer
               </text>

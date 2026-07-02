@@ -29,7 +29,7 @@ export function ComputeLadder() {
           <span className="font-display text-[12.5px] font-semibold tracking-[0.04em]">
             {r.label}
           </span>
-          <div className="bg-paper relative h-[26px] rounded-md border border-(--card-line)">
+          <div className="relative h-[26px] rounded-md border border-(--card-line) bg-(--card-bg)">
             {reduced ? (
               <div
                 className={`absolute inset-y-0 left-0 rounded-[5px] ${r.fill}`}

@@ -72,7 +72,7 @@ export function TransductionDemo() {
   return (
     <div
       aria-live="off"
-      className="bg-ink text-paper min-h-[120px] rounded-xl px-8 py-[30px] font-mono text-[15.5px]"
+      className="text-paper min-h-[120px] rounded-xl border border-(--card-line) bg-(--card-bg) px-8 py-[30px] font-mono text-[15.5px]"
     >
       <div className="text-clay font-display mb-2.5 text-[11px] font-semibold tracking-[0.2em] uppercase">
         {demo.lab}

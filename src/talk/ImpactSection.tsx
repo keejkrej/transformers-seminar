@@ -96,7 +96,7 @@ const ITEMS: TimelineItem[] = [
 const DOT_ACCENT = ['border-clay', 'border-sky', 'border-olive']
 
 /** Original stripe color #f1efe6 ≈ 50/50 paper/mist — built from tokens, no new hex. */
-const STRIPE = 'color-mix(in srgb, var(--color-paper) 50%, var(--color-mist))'
+const STRIPE = 'color-mix(in srgb, var(--color-carddark) 55%, var(--color-linedark))'
 
 function Year({ children }: { children: ReactNode }) {
   return <span className="font-mono text-[13px] text-stone">{children}</span>
@@ -106,7 +106,7 @@ function Dot({ accent }: { accent: string }) {
   return (
     <span
       aria-hidden
-      className={`absolute top-[7px] left-[-32.5px] h-[13px] w-[13px] rounded-full border-[3px] bg-paper ${accent}`}
+      className={`absolute top-[7px] left-[-32.5px] h-[13px] w-[13px] rounded-full border-[3px] bg-(--sec-bg) ${accent}`}
     />
   )
 }

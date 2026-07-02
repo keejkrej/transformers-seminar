@@ -27,7 +27,7 @@ export function PathViz() {
           fontWeight={600}
           letterSpacing={2}
           style={{ fontFamily: 'var(--font-display)' }}
-          fill="var(--color-inksoft)"
+          fill="var(--soft)"
         >
           SIGNAL TRAVEL: FIRST WORD → LAST WORD
         </text>
@@ -56,8 +56,8 @@ export function PathViz() {
               cx={x}
               cy={Y1}
               r={R}
-              fill="var(--color-mist)"
-              stroke="var(--color-ink)"
+              fill="var(--color-carddark)"
+              stroke="var(--color-stone)"
               strokeWidth={1.4}
             />
           ))}
@@ -84,8 +84,8 @@ export function PathViz() {
               cx={x}
               cy={Y2}
               r={R}
-              fill="var(--color-mist)"
-              stroke="var(--color-ink)"
+              fill="var(--color-carddark)"
+              stroke="var(--color-stone)"
               strokeWidth={1.4}
             />
           ))}

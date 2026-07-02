@@ -70,8 +70,8 @@ export function CompleteGraph() {
               cx={n.x}
               cy={n.y}
               r={NODE_R}
-              fill={focus ? 'var(--color-clay)' : 'var(--color-paper)'}
-              stroke={focus ? 'var(--color-clay)' : 'var(--color-ink)'}
+              fill={focus ? 'var(--color-clay)' : 'var(--card-bg)'}
+              stroke={focus ? 'var(--color-clay)' : 'var(--color-fog)'}
               strokeWidth={1.6}
             />
             <text
@@ -80,7 +80,7 @@ export function CompleteGraph() {
               textAnchor="middle"
               fontSize={13}
               style={{ fontFamily: 'var(--font-mono)' }}
-              fill={focus ? 'var(--color-paper)' : 'var(--color-ink)'}
+              fill='var(--color-paper)'
             >
               {TOKENS[i]}
             </text>

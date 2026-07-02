@@ -32,7 +32,7 @@ export function ImbalanceBars() {
           <span className="font-display text-[12.5px] font-semibold tracking-[0.06em]">
             {r.label}
           </span>
-          <div className="bg-paper h-[22px] overflow-hidden rounded-md border border-(--card-line)">
+          <div className="h-[22px] overflow-hidden rounded-md border border-(--card-line) bg-(--card-bg)">
             <div
               className="h-full rounded-[5px]"
               style={{
