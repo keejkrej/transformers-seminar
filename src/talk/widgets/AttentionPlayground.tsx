@@ -69,8 +69,9 @@ function headWeights(h: number, i: number, adjective: Adjective): number[] {
 }
 
 /**
- * The paper's Figure 8, live: click a token, watch three attention heads
- * draw their arcs; swap the adjective and "it" changes its referent.
+ * The coreference demo from Google's Transformer announcement post, live:
+ * click a token, watch three attention heads draw their arcs; swap the
+ * adjective and "it" changes its referent.
  */
 export function AttentionPlayground() {
   const [adjective, setAdjective] = useState<Adjective>('tired')

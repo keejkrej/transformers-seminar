@@ -5,6 +5,7 @@ import { Reveal } from '../components/Reveal'
 import { Card, Tag } from '../components/Card'
 import { Math } from '../components/Math'
 import { AttentionPlayground } from './widgets/AttentionPlayground'
+import { MultiHeadDiagram } from './widgets/MultiHeadDiagram'
 import { PECanvas } from './widgets/PECanvas'
 import { ArchDiagram } from './widgets/ArchDiagram'
 
@@ -75,7 +76,7 @@ export function IdeaSection() {
           <Lede>
             Self-attention: each position computes what to pull from every other position — in
             one matrix multiply, no steps, no chain. Distance costs nothing. Here is the
-            paper's own example (its Figure 8), live:
+            coreference example from Google's announcement post for the paper, live:
           </Lede>
         </Reveal>
 
@@ -104,13 +105,73 @@ export function IdeaSection() {
           ))}
         </div>
         <Reveal>
+          <BlockLabel>Multi-head attention: several relations at once</BlockLabel>
+        </Reveal>
+        <Reveal>
+          <Lede>
+            One head has a structural limit: softmax produces a <em>single</em> distribution, so
+            each token gets one weighted average — it can ask only one question of its context per
+            layer. But a token routinely needs several answers at once. In the sentence above,
+            “it” must find its referent, its governing verb, and its local modifiers{' '}
+            <em>simultaneously</em> — three different relations, three different places to look.
+          </Lede>
+        </Reveal>
+        <Reveal>
           <Body>
-            Run that <strong>h = 8 times in parallel</strong> with different learned
-            projections (<Mono>d_k = d_v = 64</Mono> each, concatenated back to 512) and you
-            get <strong>multi-head attention</strong> — eight subspaces attending to different
-            relationships, like the three heads you toggled above. Attention is used three ways in
-            the model: encoder self-attention, <em>masked</em> decoder self-attention, and
-            decoder→encoder cross-attention.
+            The paper's answer: run the mechanism <strong>h = 8 times in parallel</strong>, each
+            copy with its own learned projections into a small subspace, then concatenate and mix:
+          </Body>
+        </Reveal>
+        <Reveal>
+          <div className="mt-[26px] rounded-[14px] border border-(--card-line) bg-(--card-bg) px-[30px] py-[26px] text-center text-[clamp(0.95rem,2.2vw,1.35rem)]">
+            <Math block>
+              {String.raw`\begin{aligned}\mathrm{MultiHead}(Q,K,V)&=\mathrm{Concat}(\mathrm{head}_1,\ldots,\mathrm{head}_8)\,W^{O}\\[3pt]\mathrm{head}_i&=\mathrm{Attention}(QW_i^{Q},\,KW_i^{K},\,VW_i^{V})\end{aligned}`}
+            </Math>
+          </div>
+        </Reveal>
+        <Reveal>
+          <MultiHeadDiagram />
+        </Reveal>
+        <div className="mt-9 grid grid-cols-3 gap-[18px] max-[900px]:grid-cols-1">
+          <Reveal>
+            <Card className="h-full">
+              <Tag accent="clay">Slices, not copies</Tag>
+              <p>
+                The heads do not attend at full width eight times. Each projects down to{' '}
+                <Mono>d_k = d_v = 64</Mono> dimensions, and 8 × 64 = 512 — the total cost stays
+                close to a single full-width head. Width is divided, not multiplied.
+              </p>
+            </Card>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <Card className="h-full">
+              <Tag accent="sky">Different learned lenses</Tag>
+              <p>
+                Each head owns its own <Mono>W_Q, W_K, W_V</Mono> — its own definition of
+                relevance. The paper's appendix finds heads specializing in syntax, in
+                coreference, in long-distance dependencies; nothing assigns these roles, the
+                projections learn them.
+              </p>
+            </Card>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <Card className="h-full">
+              <Tag accent="olive">Softmax must choose</Tag>
+              <p>
+                Within a head, the weights sum to 1 — attending more to one token means attending
+                less to every other. Separate heads decouple competing needs instead of blending
+                them into one compromised distribution.
+              </p>
+            </Card>
+          </Reveal>
+        </div>
+        <Reveal>
+          <Body>
+            The three heads you toggled in the playground above are exactly this — one mechanism,
+            three learned lenses. The full model uses multi-head attention in three places:
+            encoder self-attention, <em>masked</em> decoder self-attention, and decoder→encoder
+            cross-attention. (Years later the per-head keys and values became the dominant serving
+            cost — the subject of Module M1.)
           </Body>
         </Reveal>
 
@@ -127,6 +188,30 @@ export function IdeaSection() {
         </Reveal>
         <Reveal>
           <PECanvas />
+        </Reveal>
+        <Reveal>
+          <Body>
+            This need is not a translation quirk — it follows every Transformer derivative,
+            because attention is permutation-invariant wherever it goes: any structure the data
+            has must be injected explicitly. ViT adds position embeddings to its image patches
+            (without them, an image is a bag of patches); DETR uses a 2D sinusoidal variant over
+            the image plane; Segment Anything encodes prompt clicks with Fourier-feature
+            positional encodings; and diffusion models reuse the 2017 sinusoid formula itself to
+            embed the denoising <em>timestep</em>. Whenever something is tokenized — pixels,
+            points, time — a positional encoding rides along.
+          </Body>
+        </Reveal>
+        <Reveal>
+          <Body className="text-(--note)!">
+            Within language models, the additive scheme is the part of the paper that aged
+            fastest — modern LLMs rotate queries and keys inside attention instead.{' '}
+            <a
+              href="#rope"
+              className="font-display text-clay text-[11px] font-semibold tracking-[0.14em] uppercase no-underline transition-opacity hover:opacity-75"
+            >
+              M7 · Rotary position embeddings →
+            </a>
+          </Body>
         </Reveal>
 
         <Reveal>

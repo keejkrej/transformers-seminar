@@ -46,12 +46,14 @@ export function LineageSection() {
           </Reveal>
           <Reveal delay={0.16}>
             <Card className="h-full">
-              <Tag accent="olive">Inherited · forever</Tag>
+              <Tag accent="olive">Inherited · 1951</Tag>
               <H3>Autoregressive factorization</H3>
               <p>
-                Generate y one token at a time, each conditioned on everything before:{' '}
-                <Math>{String.raw`p(y)=\textstyle\prod_i p(y_i \mid y_{<i},\, x)`}</Math>. The
-                Transformer leaves this unchanged — a point we return to in Part 08.
+                The chain rule of probability, applied to text: generate y one token at a time,
+                each conditioned on everything before,{' '}
+                <Math>{String.raw`p(y)=\textstyle\prod_i p(y_i \mid y_{<i},\, x)`}</Math>. Shannon
+                modeled English this way in 1951; Bengio et al. made it neural in 2003. The
+                Transformer leaves it unchanged — a point we return to in Part 08.
               </p>
             </Card>
           </Reveal>
