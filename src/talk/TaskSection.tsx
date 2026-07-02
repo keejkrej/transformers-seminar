@@ -34,7 +34,8 @@ export function TaskSection() {
         </Reveal>
         <Reveal>
           <Lede>
-            The paper's arena is <strong>sequence transduction</strong>: map a variable-length
+            The paper addresses the task of <strong>sequence transduction</strong>: map a
+            variable-length
             input sequence to a variable-length output sequence, where the alignment between the
             two is latent — nobody tells the model which output token corresponds to which input
             token.

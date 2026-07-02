@@ -16,8 +16,6 @@ const ARC_COLORS = [
 const CHIPS = [
   PAPER.venue,
   'Google Brain · Google Research',
-  `${PAPER.authors} authors, equal contribution`,
-  `${PAPER.pages} pages`,
   `arXiv:${PAPER.arxiv.split('/abs/')[1]}`,
 ]
 
@@ -155,7 +153,7 @@ export function HeroSection() {
       <Wrap className="w-full">
         <Reveal>
           <p className="font-display text-clay mb-[34px] text-[12.5px] font-semibold tracking-[0.28em] uppercase">
-            A seminar in one continuous scroll · Vaswani et al., 2017
+            Vaswani et al., 2017
           </p>
           <h1
             ref={titleRef}
@@ -183,8 +181,8 @@ export function HeroSection() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-[38px] max-w-[56ch] text-[clamp(1rem,1.4vw,1.2rem)] text-(--soft)">
-            Eight people at Google threw away recurrence, kept one mechanism, and accidentally
-            built the substrate of modern AI. This page is the talk — just keep scrolling.
+            Eight people at Google threw out recurrence, bet everything on attention, and ended up
+            with the architecture behind almost every model since.
           </p>
         </Reveal>
         <Reveal delay={0.2}>

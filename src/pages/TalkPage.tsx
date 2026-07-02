@@ -15,7 +15,7 @@ import { CodaSection } from '../talk/CodaSection'
 /** The full talk: one continuous scroll, sections in TALK_SECTIONS order. */
 export function TalkPage() {
   useEffect(() => {
-    document.title = 'Attention Is All You Need — a scroll-through talk'
+    document.title = 'Attention Is All You Need'
   }, [])
 
   // ←/→ jump between sections (presenter-friendly)
