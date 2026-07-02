@@ -7,7 +7,7 @@ export interface ModuleMeta {
   tagline: string
   accent: Accent
   /** which Part 08 debt this module pays down */
-  debt: 'memory' | 'compute' | 'sequential' | 'staleness'
+  debt: 'memory' | 'compute' | 'sequential' | 'staleness' | 'order'
 }
 
 export const MODULES: ModuleMeta[] = [
@@ -58,6 +58,14 @@ export const MODULES: ModuleMeta[] = [
     tagline: 'New memory tiers between weights and context',
     accent: 'clay',
     debt: 'staleness',
+  },
+  {
+    slug: 'rope',
+    num: 'M7',
+    title: 'Rotary position embeddings',
+    tagline: 'RoPE — attention made distance-aware by design, not by recurrence',
+    accent: 'sky',
+    debt: 'order',
   },
 ]
 

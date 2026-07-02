@@ -137,7 +137,7 @@ export function DebtSection() {
         <Reveal className="mt-10">
           <div className="rounded-[10px] border border-(--card-line) bg-(--card-bg) px-7 py-6">
             <p className="font-display text-[11px] font-semibold tracking-[0.2em] uppercase text-(--note)">
-              Extension modules · six deep dives
+              Extension modules · seven deep dives
             </p>
             <div className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {MODULES.map((m) => (

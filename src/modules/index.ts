@@ -5,6 +5,7 @@ import StateSpaceModels from './StateSpaceModels'
 import TwoTower from './TwoTower'
 import ContinualLearning from './ContinualLearning'
 import EngramCartridges from './EngramCartridges'
+import Rope from './Rope'
 
 /**
  * Extension-module components, keyed by slug (must match src/data/modules.ts).
@@ -17,4 +18,5 @@ export const MODULE_COMPONENTS: Record<string, ComponentType> = {
   twotower: TwoTower,
   'continual-learning': ContinualLearning,
   'engram-cartridges': EngramCartridges,
+  rope: Rope,
 }

@@ -21,5 +21,6 @@ export const TALK_SECTIONS: TalkSection[] = [
   { id: 'twotower', label: 'M4 TwoTower', dark: true },
   { id: 'continual-learning', label: 'M5 Continual', dark: true },
   { id: 'engram-cartridges', label: 'M6 Engrams', dark: true },
+  { id: 'rope', label: 'M7 RoPE', dark: true },
   { id: 'close', label: '09 Coda', dark: true },
 ]
